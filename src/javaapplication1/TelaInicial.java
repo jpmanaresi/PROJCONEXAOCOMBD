@@ -32,28 +32,28 @@ public TelaInicial() {
         });
 
         // Botão para abrir a tela de cadastro de filmes
-       /* JButton btnFilmes = new JButton("Cadastro de Filmes");
+        JButton btnFilmes = new JButton("Cadastro de Filmes");
         btnFilmes.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 TelaCadastroFilmes telaCadastroFilmes = new TelaCadastroFilmes();
                 telaCadastroFilmes.setVisible(true);
             }
-        });*/
+        });
 
         // Botão para abrir a tela de registro de locação de filmes
-        /*JButton btnLocacao = new JButton("Registro de Locação");
+        JButton btnLocacao = new JButton("Registro de Locação");
         btnLocacao.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 TelaRegistroLocacao telaRegistroLocacao = new TelaRegistroLocacao();
                 telaRegistroLocacao.setVisible(true);
             }
-        });*/
+        });
 
         // Layout do JFrame
         setLayout(new FlowLayout());
         add(btnCliente);
-        //add(btnFilmes);
-       //add(btnLocacao);
+        add(btnFilmes);
+        add(btnLocacao);
     }
 
     public static void main(String[] args) {
