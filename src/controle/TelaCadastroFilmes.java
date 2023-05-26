@@ -17,10 +17,10 @@ public class TelaCadastroFilmes extends javax.swing.JFrame {
         initComponents();
         con_cliente = new Conexao();
         con_cliente.conecta();
-        con_cliente.executaSQL("select * from tbclientes order by cod");
+        con_cliente.executaSQL("select * from tblfilmes order by id");
         preencherTabela();
         posicionarRegistro();
-        tblClientes.setAutoCreateRowSorter(true);
+        tblFilmes.setAutoCreateRowSorter(true);
         
        
     }
@@ -41,13 +41,11 @@ public class TelaCadastroFilmes extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         txtCod = new javax.swing.JTextField();
-        txtNome = new javax.swing.JTextField();
-        txtNasc = new javax.swing.JTextField();
-        txtFone = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        txtEmail = new javax.swing.JTextField();
+        txtTitulo = new javax.swing.JTextField();
+        txtAqs = new javax.swing.JTextField();
+        txtQtd = new javax.swing.JTextField();
         jTable = new javax.swing.JScrollPane();
-        tblClientes = new javax.swing.JTable();
+        tblFilmes = new javax.swing.JTable();
         btnPrimeiroRegistro = new javax.swing.JButton();
         btnUltimoRegistro = new javax.swing.JButton();
         btnVoltarUmRegistro = new javax.swing.JButton();
@@ -58,6 +56,8 @@ public class TelaCadastroFilmes extends javax.swing.JFrame {
         btnExcluir = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         txt_pesquisa = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        txtQtdTot = new javax.swing.JTextField();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -76,11 +76,11 @@ public class TelaCadastroFilmes extends javax.swing.JFrame {
 
         jLabel1.setText("id");
 
-        jLabel2.setText("Nome");
+        jLabel2.setText("Título");
 
-        jLabel3.setText("Data Nascimento");
+        jLabel3.setText("Data Aquisição");
 
-        jLabel4.setText("Telefone");
+        jLabel4.setText("Quantidade Disp");
 
         txtCod.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -88,9 +88,7 @@ public class TelaCadastroFilmes extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setText("Email");
-
-        tblClientes.setModel(new javax.swing.table.DefaultTableModel(
+        tblFilmes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -98,7 +96,7 @@ public class TelaCadastroFilmes extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Id", "Nome", "Data Nascimento", "Telefone", "Email"
+                "Id", "Título", "Data Aquisição", "Qtd Disp", "Qtd Tot"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -109,17 +107,17 @@ public class TelaCadastroFilmes extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        tblClientes.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblFilmes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblClientesMouseClicked(evt);
+                tblFilmesMouseClicked(evt);
             }
         });
-        tblClientes.addKeyListener(new java.awt.event.KeyAdapter() {
+        tblFilmes.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                tblClientesKeyPressed(evt);
+                tblFilmesKeyPressed(evt);
             }
         });
-        jTable.setViewportView(tblClientes);
+        jTable.setViewportView(tblFilmes);
 
         btnPrimeiroRegistro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/352470_backspace_icon.png"))); // NOI18N
         btnPrimeiroRegistro.addActionListener(new java.awt.event.ActionListener() {
@@ -183,7 +181,7 @@ public class TelaCadastroFilmes extends javax.swing.JFrame {
             }
         });
 
-        jLabel6.setText("Pesquise pelo nome do Cliente:");
+        jLabel6.setText("Pesquise pelo nome do Filme:");
 
         txt_pesquisa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -196,6 +194,8 @@ public class TelaCadastroFilmes extends javax.swing.JFrame {
             }
         });
 
+        jLabel5.setText("Quantidade Total");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -204,27 +204,21 @@ public class TelaCadastroFilmes extends javax.swing.JFrame {
                 .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(13, 13, 13)
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_pesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
                                     .addComponent(jLabel3)
                                     .addComponent(jLabel4)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel1))
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel5))
                                 .addGap(52, 52, 52)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtCod, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtNasc)
-                                    .addComponent(txtNome)
-                                    .addComponent(txtFone, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtAqs, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
+                                    .addComponent(txtTitulo)
+                                    .addComponent(txtQtd, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txtQtdTot))
                                 .addGap(127, 127, 127)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(BtnNovo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -243,7 +237,13 @@ public class TelaCadastroFilmes extends javax.swing.JFrame {
                                     .addGap(178, 178, 178)
                                     .addComponent(btnUltimoRegistro))
                                 .addComponent(jTable, javax.swing.GroupLayout.PREFERRED_SIZE, 788, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(48, Short.MAX_VALUE))))
+                        .addContainerGap(48, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(13, 13, 13)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txt_pesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -265,20 +265,20 @@ public class TelaCadastroFilmes extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
-                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtNasc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtAqs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(txtFone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                            .addComponent(txtQtd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtQtdTot, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(txt_pesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -300,24 +300,25 @@ public class TelaCadastroFilmes extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCodActionPerformed
 
-    private void tblClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblClientesMouseClicked
-       int linha_selecionada = tblClientes.getSelectedRow();
-        txtCod.setText(tblClientes.getValueAt(linha_selecionada, 0).toString());
-        txtNome.setText(tblClientes.getValueAt(linha_selecionada, 1).toString());
-        txtNasc.setText(tblClientes.getValueAt(linha_selecionada, 2).toString());
-        txtFone.setText(tblClientes.getValueAt(linha_selecionada, 3).toString());
-        txtEmail.setText(tblClientes.getValueAt(linha_selecionada, 4).toString());
+    private void tblFilmesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblFilmesMouseClicked
+       int linha_selecionada = tblFilmes.getSelectedRow();
+        txtCod.setText(tblFilmes.getValueAt(linha_selecionada, 0).toString());
+        txtTitulo.setText(tblFilmes.getValueAt(linha_selecionada, 1).toString());
+        txtAqs.setText(tblFilmes.getValueAt(linha_selecionada, 2).toString());
+        txtQtd.setText(tblFilmes.getValueAt(linha_selecionada, 3).toString());
+        txtQtdTot.setText(tblFilmes.getValueAt(linha_selecionada, 4).toString());
+        
             
-    }//GEN-LAST:event_tblClientesMouseClicked
+    }//GEN-LAST:event_tblFilmesMouseClicked
 
-    private void tblClientesKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblClientesKeyPressed
-int linha_selecionada = tblClientes.getSelectedRow();
-        txtCod.setText(tblClientes.getValueAt(linha_selecionada, 0).toString());
-        txtNome.setText(tblClientes.getValueAt(linha_selecionada, 1).toString());
-        txtNasc.setText(tblClientes.getValueAt(linha_selecionada, 2).toString());
-        txtFone.setText(tblClientes.getValueAt(linha_selecionada, 3).toString());
-        txtEmail.setText(tblClientes.getValueAt(linha_selecionada, 4).toString());
-    }//GEN-LAST:event_tblClientesKeyPressed
+    private void tblFilmesKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tblFilmesKeyPressed
+int linha_selecionada = tblFilmes.getSelectedRow();
+        txtCod.setText(tblFilmes.getValueAt(linha_selecionada, 0).toString());
+        txtTitulo.setText(tblFilmes.getValueAt(linha_selecionada, 1).toString());
+        txtAqs.setText(tblFilmes.getValueAt(linha_selecionada, 2).toString());
+        txtQtd.setText(tblFilmes.getValueAt(linha_selecionada, 3).toString());
+        txtQtdTot.setText(tblFilmes.getValueAt(linha_selecionada, 4).toString());
+    }//GEN-LAST:event_tblFilmesKeyPressed
 
     private void btnPrimeiroRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrimeiroRegistroActionPerformed
        try{
@@ -357,24 +358,23 @@ int linha_selecionada = tblClientes.getSelectedRow();
 
     private void BtnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNovoActionPerformed
        txtCod.setText("");
-       txtNome.setText("");
-       txtNasc.setText("");
-       txtFone.setText("");
-       txtEmail.setText("");
+       txtTitulo.setText("");
+       txtAqs.setText("");
+       txtQtd.setText("");
+       txtQtdTot.setText("");
        txtCod.requestFocus();
     }//GEN-LAST:event_BtnNovoActionPerformed
 
     private void btnGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGravarActionPerformed
-      String nome = txtNome.getText();
-      String data_nasc = txtNasc.getText();
-      String telefone = txtFone.getText();
-      String email = txtEmail.getText();
-      
+      String titulo = txtTitulo.getText();
+      String dt_aquisicao = txtAqs.getText();
+      String qtd_disp = txtQtd.getText();
+      String qtd_tot = txtQtdTot.getText();
       try{
-          String insert_sql="insert into tbclientes (nome,telefone, email, dt_nasc) values ('" + nome + "','" + telefone + "','" + email + "','" + data_nasc + "')";
+          String insert_sql="insert into tblfilmes (titulo,dt_aquisicao, qtd_disp, qtd_tot) values ('" + titulo + "','" + dt_aquisicao + "','" + qtd_disp + "','" + qtd_tot + "')";
           con_cliente.statement.executeUpdate(insert_sql);
           JOptionPane.showMessageDialog(null, "Gravação realizada com sucesso!!","Mensagem do Programa",JOptionPane.INFORMATION_MESSAGE);
-          con_cliente.executaSQL("select * from tbclientes order by cod");
+          con_cliente.executaSQL("select * from tblfilmes order by id");
           con_cliente.resultset.first();
           preencherTabela();
           mostrar_Dados();
@@ -385,26 +385,26 @@ int linha_selecionada = tblClientes.getSelectedRow();
     }//GEN-LAST:event_btnGravarActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-      String nome = txtNome.getText();
-      String data_nasc = txtNasc.getText();
-      String telefone = txtFone.getText();
-      String email = txtEmail.getText();
+      String titulo = txtTitulo.getText();
+      String data_aquisicao = txtAqs.getText();
+      String qtd_disp = txtQtd.getText();
+      String qtd_tot = txtQtdTot.getText();
       String sql="";
       String msg="";
       
       try{
           if(txtCod.getText().equals("")){
-             sql="insert into tbclientes (nome,telefone, email,dt_nasc) values ('"+ nome +"','"+ telefone +"','"+ email +"','"+ data_nasc +"')";
+             sql="insert into tblfilmes (titulo, qtd_disp, qtd_tot, dt_aquisicao) values ('"+ titulo +"','"+ qtd_disp +"','"+ qtd_tot +"','"+ data_aquisicao +"')";
              msg="Gravação de um novo registro";
           }else{
-           sql="update tbclientes set nome='"+ nome +"', telefone='"+ telefone +"', email='"+ email +"', dt_nasc='"+ data_nasc +"' where cod ="+ txtCod.getText();
+           sql="update tblfilmes set titulo='"+ titulo +"', qtd_disp='"+ qtd_disp +"', qtd_tot='"+ qtd_tot +"', dt_aquisicao='"+ data_aquisicao +"' where id ="+ txtCod.getText();
            msg="Alteração de registro";
           }
           
           con_cliente.statement.executeUpdate(sql);
           JOptionPane.showMessageDialog(null,msg+" realizada com sucesso!!","Mensagem do Programa",JOptionPane.INFORMATION_MESSAGE);
           
-          con_cliente.executaSQL("select * from tbclientes order by cod");
+          con_cliente.executaSQL("select * from tblfilmes order by id");
           con_cliente.resultset.first();
           preencherTabela();
           mostrar_Dados();
@@ -421,11 +421,11 @@ int linha_selecionada = tblClientes.getSelectedRow();
         try{
            int resposta = JOptionPane.showConfirmDialog(rootPane,"Deseja excluir o registro:", "Confirmar Exclusão", JOptionPane.YES_NO_OPTION,3);
            if (resposta == 0){
-               sql = "delete from tbclientes where cod = " + txtCod.getText();
+               sql = "delete from tblfilmes where id = " + txtCod.getText();
                int excluir = con_cliente.statement.executeUpdate(sql);
            if (excluir == 1){
                JOptionPane.showMessageDialog(null, "Exclusão realizada com sucesso!!", "Mensagem de Programa", JOptionPane.INFORMATION_MESSAGE);
-               con_cliente.executaSQL("select * from tbclientes order by cod");
+               con_cliente.executaSQL("select * from tblfilmes order by id");
                con_cliente.resultset.first();
                preencherTabela();
                posicionarRegistro();
@@ -445,7 +445,7 @@ int linha_selecionada = tblClientes.getSelectedRow();
 
     private void txt_pesquisaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_pesquisaKeyReleased
        try{
-        String pesquisa = "select * from tbclientes where nome like '" + txt_pesquisa.getText()+ "%'";
+        String pesquisa = "select * from tblfilmes where titulo like '" + txt_pesquisa.getText()+ "%'";
         con_cliente.executaSQL(pesquisa);
         
         if(con_cliente.resultset.first()){
@@ -470,11 +470,11 @@ int linha_selecionada = tblClientes.getSelectedRow();
     
     public void mostrar_Dados(){
       try{
-          txtCod.setText(con_cliente.resultset.getString("cod"));
-          txtNome.setText(con_cliente.resultset.getString("nome"));
-          txtNasc.setText(con_cliente.resultset.getString("dt_nasc"));
-          txtFone.setText(con_cliente.resultset.getString("telefone"));
-          txtEmail.setText(con_cliente.resultset.getString("email"));
+          txtCod.setText(con_cliente.resultset.getString("id"));
+          txtTitulo.setText(con_cliente.resultset.getString("titulo"));
+          txtAqs.setText(con_cliente.resultset.getString("dt_aquisicao"));
+          txtQtd.setText(con_cliente.resultset.getString("qtd_disp"));
+          txtQtdTot.setText(con_cliente.resultset.getString("qtd_tot"));
           
       }catch(SQLException erro){
        JOptionPane.showMessageDialog(null,"Não localizou dados: "+erro,"Mensagem do Programa",JOptionPane.INFORMATION_MESSAGE);
@@ -482,20 +482,20 @@ int linha_selecionada = tblClientes.getSelectedRow();
     }
     
     public void preencherTabela(){
-       tblClientes.getColumnModel().getColumn(0).setPreferredWidth(4);
-       tblClientes.getColumnModel().getColumn(1).setPreferredWidth(150);
-       tblClientes.getColumnModel().getColumn(2).setPreferredWidth(11);
-       tblClientes.getColumnModel().getColumn(3).setPreferredWidth(14);
-       tblClientes.getColumnModel().getColumn(4).setPreferredWidth(100);
+       tblFilmes.getColumnModel().getColumn(0).setPreferredWidth(4);
+       tblFilmes.getColumnModel().getColumn(1).setPreferredWidth(150);
+       tblFilmes.getColumnModel().getColumn(2).setPreferredWidth(11);
+       tblFilmes.getColumnModel().getColumn(3).setPreferredWidth(14);
+       tblFilmes.getColumnModel().getColumn(4).setPreferredWidth(100);
        
-       DefaultTableModel modelo = (DefaultTableModel) tblClientes.getModel();
+       DefaultTableModel modelo = (DefaultTableModel) tblFilmes.getModel();
        modelo.setNumRows(0);
        
        try{
            con_cliente.resultset.beforeFirst();
            while (con_cliente.resultset.next()){
                modelo.addRow(new Object[]{
-               con_cliente.resultset.getString("cod"),con_cliente.resultset.getString("nome"),con_cliente.resultset.getString("dt_nasc"),con_cliente.resultset.getString("telefone"), con_cliente.resultset.getString("email")
+               con_cliente.resultset.getString("id"),con_cliente.resultset.getString("titulo"),con_cliente.resultset.getString("dt_aquisicao"),con_cliente.resultset.getString("qtd_disp"), con_cliente.resultset.getString("qtd_tot")
                });
            }
        }catch (SQLException erro){
@@ -554,12 +554,12 @@ int linha_selecionada = tblClientes.getSelectedRow();
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jTable;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable tblClientes;
+    private javax.swing.JTable tblFilmes;
+    private javax.swing.JTextField txtAqs;
     private javax.swing.JTextField txtCod;
-    private javax.swing.JTextField txtEmail;
-    private javax.swing.JTextField txtFone;
-    private javax.swing.JTextField txtNasc;
-    private javax.swing.JTextField txtNome;
+    private javax.swing.JTextField txtQtd;
+    private javax.swing.JTextField txtQtdTot;
+    private javax.swing.JTextField txtTitulo;
     private javax.swing.JTextField txt_pesquisa;
     // End of variables declaration//GEN-END:variables
 }
