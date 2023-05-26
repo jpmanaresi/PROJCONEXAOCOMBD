@@ -68,11 +68,11 @@
                               </Group>
                               <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="txtCod" min="-2" pref="85" max="-2" attributes="0"/>
-                                  <Component id="txtNasc" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtNome" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtFone" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="txtEmail" min="-2" pref="199" max="-2" attributes="0"/>
+                                  <Component id="txtcod" min="-2" pref="85" max="-2" attributes="0"/>
+                                  <Component id="txtdta_loc" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtfilme" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtdta_venc" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="txtdta_dev" min="-2" pref="199" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="127" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -122,28 +122,28 @@
                   </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="txtCod" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtcod" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtNome" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtfilme" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtNasc" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtdta_loc" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtFone" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtdta_venc" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtEmail" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtdta_dev" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -169,41 +169,41 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="id"/>
+        <Property name="text" type="java.lang.String" value="id do cliente"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Nome"/>
+        <Property name="text" type="java.lang.String" value="Filme:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Data Nascimento"/>
+        <Property name="text" type="java.lang.String" value="Data de Loca&#xe7;&#xe3;o"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Telefone"/>
+        <Property name="text" type="java.lang.String" value="Data de Vencimento"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtCod">
+    <Component class="javax.swing.JTextField" name="txtcod">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCodActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtcodActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtNome">
+    <Component class="javax.swing.JTextField" name="txtfilme">
     </Component>
-    <Component class="javax.swing.JTextField" name="txtNasc">
+    <Component class="javax.swing.JTextField" name="txtdta_loc">
     </Component>
-    <Component class="javax.swing.JTextField" name="txtFone">
+    <Component class="javax.swing.JTextField" name="txtdta_venc">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Email"/>
+        <Property name="text" type="java.lang.String" value="Data de devolu&#xe7;&#xe3;o"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtEmail">
+    <Component class="javax.swing.JTextField" name="txtdta_dev">
     </Component>
     <Container class="javax.swing.JScrollPane" name="jTable">
       <AuxValues>
@@ -212,15 +212,15 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTable" name="tblClientes">
+        <Component class="javax.swing.JTable" name="tblocacao">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="5" rowCount="4">
-                <Column editable="false" title="Id" type="java.lang.Object"/>
-                <Column editable="false" title="Nome" type="java.lang.Object"/>
-                <Column editable="false" title="Data Nascimento" type="java.lang.Object"/>
-                <Column editable="false" title="Telefone" type="java.lang.Object"/>
-                <Column editable="false" title="Email" type="java.lang.Object"/>
+                <Column editable="false" title="Id do cliente" type="java.lang.Object"/>
+                <Column editable="false" title="filme" type="java.lang.Object"/>
+                <Column editable="false" title="Data loca&#xe7;&#xe3;o" type="java.lang.Object"/>
+                <Column editable="false" title="Data de vencimento" type="java.lang.Object"/>
+                <Column editable="false" title="Data de devolu&#xe7;&#xe3;o" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -257,8 +257,8 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblClientesMouseClicked"/>
-            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tblClientesKeyPressed"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblocacaoMouseClicked"/>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tblocacaoKeyPressed"/>
           </Events>
         </Component>
       </SubComponents>
